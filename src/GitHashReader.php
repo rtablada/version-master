@@ -31,8 +31,20 @@ class GitHashReader
         return $matches[1];
     }
 
+    public function getFullVersion()
+    {
+        $path = $this->getChildPath($this->getHead());
+
+        return $this->file->get($path);
+    }
+
     protected function getHeadPath()
     {
         return $this->path . '/HEAD';
+    }
+
+    protected function getChildPath($path)
+    {
+        return $this->path . '/' . $path;
     }
 }
