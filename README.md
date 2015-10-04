@@ -35,6 +35,17 @@ $reader = new Rtablada\VersionMaster\GitHashReader();
 echo $reader->getFullVersion(); // Outputs latest hash on git HEAD
 ```
 
+## Laravel Usage
+
+This package also includes a Service Provider to allow use in Laravel Applications.
+
+This Service Provider acts in two ways:
+
+* Registers a singleton so that `Rtablada\VersionMaster\GitHashReader` can be injected.
+* Registers a `@version()` helper in Blade to output the short version number.
+
+To install this Service Provider just add `Rtablada\VersionMaster\GitHashReader::class` in your `providers` array in `config/app.php`.
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
