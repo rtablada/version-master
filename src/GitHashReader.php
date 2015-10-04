@@ -35,7 +35,12 @@ class GitHashReader
     {
         $path = $this->getChildPath($this->getHead());
 
-        return $this->file->get($path);
+        return trim($this->file->get($path));
+    }
+
+    public function getShortVersion($length = 7)
+    {
+        return substr($this->getFullVersion(), 0, $length);
     }
 
     protected function getHeadPath()

@@ -26,6 +26,14 @@ class GitHashReaderTest extends \PHPUnit_Framework_TestCase
     {
         $reader= new GitHashReader(new Filesystem(), __DIR__ . '/stubs', 'git-mock');
 
-        $this->assertSame("69ac63ac776188738b75b9bde97f8c5dd93d3f18\n", $reader->getFullVersion());
+        $this->assertSame("69ac63ac776188738b75b9bde97f8c5dd93d3f18", $reader->getFullVersion());
+    }
+
+    public function testCanReadShortVersion()
+    {
+        $reader= new GitHashReader(new Filesystem(), __DIR__ . '/stubs', 'git-mock');
+
+        $this->assertSame("69ac63a", $reader->getShortVersion());
+        $this->assertSame("69a", $reader->getShortVersion(3));
     }
 }
