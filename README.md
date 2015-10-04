@@ -8,6 +8,9 @@
 [![Total Downloads][ico-downloads]][link-downloads]
 
 Version Master is a git based versioning tool for PHP projects with Laravel Service Providers.
+This package uses the `.git` storage file to read the current hash for the specified project or folder.
+
+Since, the `GitHashReader` uses file access, it does not need to have access to the `git` command or `exec` privileges which may not be available in production environments.
 
 ## Install
 
@@ -19,8 +22,17 @@ $ composer require rtablada/version-master
 
 ## Usage
 
+The basic class for this package is the `GitHashReader`.
+It requires two arguments:
+
+* `required` - An instance of `Illuminate\Filesystem` - Used to read from the Git File Tree
+* `required` - A string path for the root of the git project.
+* `optional` - A string path for the name of the git storage folder (defaults to `.git`)
+
 ``` php
-$skeleton = new Rtablada\Skeleton();
+$reader = new Rtablada\VersionMaster\GitHashReader();
+
+echo $reader->getFullVersion(); // Outputs latest hash on git HEAD
 ```
 
 ## Change log
