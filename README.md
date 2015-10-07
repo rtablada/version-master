@@ -44,7 +44,7 @@ This Service Provider acts in two ways:
 * Registers a singleton so that `Rtablada\VersionMaster\GitHashReader` can be injected.
 * Registers a `@version()` helper in Blade to output the short version number.
 
-To install this Service Provider just add `Rtablada\VersionMaster\GitHashReader::class` in your `providers` array in `config/app.php`.
+To install this Service Provider just add `Rtablada\VersionMaster\GitVersionProvider::class` in your `providers` array in `config/app.php`.
 
 ## Change log
 
